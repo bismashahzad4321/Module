@@ -1,32 +1,41 @@
+// main.js
+import { showRegisterForm } from './To DO App/Utlis/register.js';
+import { showLoginForm } from './To DO App/Utlis/login.js';
 
-import { add, subtract, multilpy, divide } from './todo.js';
-import { showResult } from './ui.js';
 
+loadRegister();
 
-const button1 = document.querySelector(".add");
-button1.addEventListener("click" , ()=> {
-    const number1 = Number(document.querySelector(".number1").value);
-    const number2 = Number(document.querySelector(".number2").value);
-    showResult(add(number1, number2));
-});
+function loadRegister() {
+    showRegisterForm();
 
-const button2 = document.querySelector(".subtract");
-button2.addEventListener("click" , ()=> {
-    const number1 = Number(document.querySelector(".number1").value);
-    const number2 = Number(document.querySelector(".number2").value);
-    showResult(subtract(number1, number2));
-});
+    document.querySelector(".register").addEventListener("click", () => {
+        const name = document.querySelector(".nameInput").value;
+        const email = document.querySelector(".emailInput").value;
+        const password = document.querySelector(".passwordInput").value;
 
-const button3 = document.querySelector(".multiply");
-button3.addEventListener("click" , ()=> {
-    const number1 = Number(document.querySelector(".number1").value);
-    const number2 = Number(document.querySelector(".number2").value);
-    showResult(multilpy(number1, number2));
-});
+        console.log("Registered:");
+        console.log("Name:", name);
+        console.log("Email:", email);
+        console.log("Password:", password);
+        alert("Registered Successfully!");
 
-const button4 = document.querySelector(".divide");
-button4.addEventListener("click" , ()=> {
-    const number1 = Number(document.querySelector(".number1").value);
-    const number2 = Number(document.querySelector(".number2").value);
-    showResult(divide(number1,  number2));
-});
+    });
+
+    document.querySelector(".loginLink").addEventListener("click", loadLogin);
+}
+
+function loadLogin() {
+    showLoginForm();
+
+    document.querySelector(".loginLink").addEventListener("click", () => {
+        const email = document.querySelector(".emailInput").value;
+        const password = document.querySelector(".passwordInput").value;
+
+        console.log("Logged In:");
+        console.log("Email:", email);
+        console.log("Password:", password);
+         alert("Login Successfully!");
+    });
+
+    document.getElementById("registerLink").addEventListener("click", loadRegister);
+}
